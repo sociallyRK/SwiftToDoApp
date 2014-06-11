@@ -11,8 +11,8 @@ import UIKit
 class SecondViewController: UIViewController, UITextFieldDelegate {
     //UI TextFieldDelegate gives us access to extra functions
     
-    @IBOutlet var textTask: UITextField!
-    @IBOutlet var textDesc: UITextField!
+    @IBOutlet var txtTask: UITextField!
+    @IBOutlet var txtDesc: UITextField!
                             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +23,20 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+   
 
     //Events
     @IBAction func btnAddTask_Click(sender: UIButton){
         //println("the button was clicked.")
-        taskMgr.addTask(name: txtTask.text, desc: txtDesc.text);
+        taskMgr.addTask(txtTask.text, desc: txtDesc.text)
+        //why is there no name for the first argument of task
+        self.view.endEditing(true)
+        txtTask.text = ""
+        txtDesc.text = ""
+        self.tabBarController.selectedIndex = 0;
+        //move the user back to the index page
+        
     }
     
     //IOS Touch Functions
